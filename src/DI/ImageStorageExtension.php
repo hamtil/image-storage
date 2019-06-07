@@ -27,7 +27,7 @@ class ImageStorageExtension extends CompilerExtension
 		$builder = $this->getContainerBuilder();
 
 		$builder->addDefinition($this->prefix('storage'))
-			->setClass('Ublaboo\ImageStorage\ImageStorage')
+			->setClass('Contributte\ImageStorage\ImageStorage')
 			->setArguments([
 				$config['data_path'],
 				$config['data_dir'],
@@ -48,7 +48,7 @@ class ImageStorageExtension extends CompilerExtension
 		$builder = $this->getContainerBuilder();
 
 		$builder->getDefinition('nette.latteFactory')
-			->addSetup('Contributte\ImageStorage\Macros\Macros::install(?->getCompiler())', ['@self']);
+			->getResultDefinition()->addSetup('Contributte\ImageStorage\Macros\Macros::install(?->getCompiler())', ['@self']);
 	}
 
 
